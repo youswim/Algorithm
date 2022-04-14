@@ -18,7 +18,8 @@ public class Main {
 
         boolean[] visited = new boolean[n + 1];
 
-        ArrayList<ArrayList<Integer>> adList = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> adList = new ArrayList<>(n+1);
+        //ArrayList의 크기 변경이 없도록 initialCapacity를 줌
 
         for (int i = 0; i <= n; i++) {
             adList.add(new ArrayList<>());
