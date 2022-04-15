@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         String[] str = br.readLine().split(" ");
 
@@ -36,8 +37,10 @@ public class Main {
         }
 
         Queue<Integer> queue = new LinkedList<>();
-        visited[v] = true;
         queue.add(v);
+        visited[v] = true;
+        sb.append(v);
+
 
         // 1. 큐에 들어있는 노드 poll하기(동시에 출력)
         // 2. poll 한 노드의 인접 노드들의 방문 여부 확인
@@ -46,17 +49,15 @@ public class Main {
 
         while (queue.size() != 0) { //queue가 비어있지 않다면
             v = queue.poll(); // 뺀다
-            System.out.print(v + " ");
-            // queue에서 뺄때 출력. 방문할 때 출력해도 상관 없음.
-            // 어차피 방문 할 때 하므로
             
             for (int w : adList.get(v)) {
                 if (!visited[w]) { // 아직 방문하지 않았다면
-                    visited[w] = true; // 방문 기록
                     queue.add(w);
+                    visited[w] = true; // 방문 기록
+                    sb.append(" ").append(w);
                 }
             }
         }
-
+        System.out.println(sb);
     }
 }
